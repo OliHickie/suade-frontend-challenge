@@ -117,4 +117,79 @@
 
   // TODO: Add your CSS Styling here
 
+  .input-container {
+    margin: var(--item-margin) 0;
+  }
+
+  .container {
+    font-family: var(--font);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--item-margin);
+    margin-bottom: var(--item-margin);
+  }
+
+  .item {
+    padding: var(--item-padding);
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: calc(100% / var(--items-by-row-when-screen-is-less-than-600px) - var(--item-margin));
+    
+    &:nth-child(odd) {
+      background-color: var(--background-2);
+    }
+    &:nth-child(even) {
+      background-color: var(--background-3);
+    }
+    &:nth-child(4n) {
+      background-color: var(--background-1);
+    }
+
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .container {
+      gap: var(--item-margin);
+    }
+    .item {
+      width: calc(100% / var(--items-by-row-when-screen-is-more-than-600px) - var(--item-margin));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      gap: var(--item-margin);
+    }
+    .item {
+      width: calc(100% / var(--items-by-row-when-screen-is-more-than-1024px) - var(--item-margin));
+    }
+  }
+
+  .eye-color {
+    display: flex;
+    .eye-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+    }
+    .brown {
+      filter: hue-rotate(var(--eye-brown));
+    }
+    .green {
+      filter: hue-rotate(var(--eye-green));
+    }
+    .blue {
+      filter: hue-rotate(vue(--eye-blue));
+    }
+
+  }
+
 </style>
