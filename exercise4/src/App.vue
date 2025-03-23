@@ -17,13 +17,37 @@
   </div>
   <h4>Solution</h4>
   <div class="solution">
-    <!-- TODO: implement template here -->
+    <List :data="people" :filtering="helpers.filterByAge(25, 35)" :sorting="helpers.sortByAge">
+      <template v-slot="{item}">
+        <span>{{item.name}}, {{item.age}}</span>
+      </template>
+    </List>
   </div>
 
 </template>
 
 <script>
-  // TODO: implement logic here
+  import helpers from './helpers/helpers';
+  import List from './components/List';
+
+  export default {
+    name: 'App',
+    components: {List},
+    data() {
+      return {
+        helpers: helpers,
+      };
+    },
+    computed: {
+      people() {
+        return this.$store.state.people;
+      },
+    },
+    created() {
+      this.$store.dispatch('getPeople');
+    },
+    methods: {},
+  };
 </script>
 
 <style lang="scss">
