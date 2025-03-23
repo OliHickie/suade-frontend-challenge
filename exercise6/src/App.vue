@@ -64,6 +64,7 @@
             if (!this.searchString) {
               return true;
             } else {
+              this.pagination.offset = 0;
               return Object.values(person)
                 .slice(1, -2) // get rid of ID and nested objects
                 .join(' ')
