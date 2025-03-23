@@ -14,7 +14,7 @@
     props: {
       person: {
         type: Object,
-        default: {},
+        default: () => ({}),
       },
     },
   };
