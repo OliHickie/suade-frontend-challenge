@@ -14,16 +14,19 @@
   <div class="solution">
 
     <div class="person-wrapper">
-      <PersonCard v-for="person in people" :person="person" class="person-card" :personClick="alertBox"/>
+      <PersonCard
+        v-for="(person, index) in people"
+        :key="index"
+        :person="person"
+        @personClick="alertBox"
+      />
     </div>
     <div class="summary">{{people.length}} persons cards displayed</div>
-
   </div>
 
 </template>
 
 <script>
-
   import PersonCard from './components/PersonCard';
   import people from './assets/people.json';
 
@@ -45,15 +48,6 @@
 </script>
 
 <style lang="scss">
-
-  .person-card {
-    background: #e4e4e4;
-    min-width: 100px;
-    float: left;
-    width: 300px;
-    margin: 10px;
-  }
-
   .summary {
     text-align: center;
     clear: both;
