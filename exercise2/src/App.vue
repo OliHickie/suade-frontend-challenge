@@ -16,7 +16,7 @@
   </div>
   <h4>Solution</h4>
   <div class="solution">
-    <List data="people" options="options"></List>
+    <List :data="people" :options="options" @updateOffset="updateOffset"></List>
   </div>
 
 </template>
@@ -36,12 +36,17 @@
     },
     created() {
       fetch('https://suade.org/filehosting/challenges/people.json')
-        .then(function(response) {
-          response.json();
-        })
-        .then(function(data) {
+        .then((response) => {
+          return response.json();
+        }).then((data) => {
           this.people = data;
-        });
+          console.log("people", data, this.people);
+        })
+    },
+    methods: {
+      updateOffset(offset) {
+        this.options.pagination.offset = offset;
+      },
     },
   };
 
